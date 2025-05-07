@@ -19,7 +19,7 @@ const School = () => {
             </div>
             <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-indigo-500/20 transition">
               <h3 className="text-2xl font-semibold">
-                High School: Gymnázium Ivana Kraska
+                Grammar school Ivan Krasko
               </h3>
               <p className="text-lg text-indigo-300 mb-1">2018 – 2022</p>
               <p className="text-lg text-gray-300">Rimavská Sobota</p>
