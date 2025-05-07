@@ -1,6 +1,5 @@
 import eduImage from "../assets/education.svg";
 
-
 const School = () => {
   return (
     <section id="school">
@@ -10,7 +9,7 @@ const School = () => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 space-y-10">
             <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-indigo-500/20 transition">
-              <h3 className="text-2xl font-semibold text-white">
+              <h3 className="text-2xl font-semibold">
                 Masaryk University – Faculty of Informatics
               </h3>
               <p className="text-lg text-indigo-300 mb-1">2022 – 2025</p>
@@ -19,7 +18,7 @@ const School = () => {
               </p>
             </div>
             <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-indigo-500/20 transition">
-              <h3 className="text-2xl font-semibold text-white">
+              <h3 className="text-2xl font-semibold">
                 High School: Gymnázium Ivana Kraska
               </h3>
               <p className="text-lg text-indigo-300 mb-1">2018 – 2022</p>
