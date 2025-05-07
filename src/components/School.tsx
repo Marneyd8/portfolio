@@ -1,18 +1,39 @@
+import eduImage from "../assets/education.svg";
+
 
 const School = () => {
   return (
     <section id="school">
-      <h2 className="text-3xl font-bold mb-6">Education</h2>
-      <div className="space-y-6">
-        <div>
-          <h3 className="text-xl font-semibold">Masaryk University – Faculty of Informatics</h3>
-          <p className="text-sm text-gray-500">2022 – 2025</p>
-          <p>Bachelor’s in Programming and Application Development</p>
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-5xl font-bold mb-12 pl-25">Education</h2>
+        <div className="space-y-10">
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1 space-y-10">
+            <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-indigo-500/20 transition">
+              <h3 className="text-2xl font-semibold text-white">
+                Masaryk University – Faculty of Informatics
+              </h3>
+              <p className="text-lg text-indigo-300 mb-1">2022 – 2025</p>
+              <p className="text-lg text-gray-300">
+                Third-year in Programming and Application Development (Bc.)
+              </p>
+            </div>
+            <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-indigo-500/20 transition">
+              <h3 className="text-2xl font-semibold text-white">
+                High School: Gymnázium Ivana Kraska
+              </h3>
+              <p className="text-lg text-indigo-300 mb-1">2018 – 2022</p>
+              <p className="text-lg text-gray-300">Rimavská Sobota</p>
+            </div>
+          </div>
+          <div className="flex-1">
+            <img
+              src={eduImage}
+              alt="MUNI FI"
+              className="w-full max-w-xs md:max-w-sm scale-90"
+            />
+          </div>
         </div>
-        <div>
-          <h3 className="text-xl font-semibold">Gymnázium Ivana Kraska</h3>
-          <p className="text-sm text-gray-500">2018 – 2022</p>
-          <p>Rimavská Sobota</p>
         </div>
       </div>
     </section>
