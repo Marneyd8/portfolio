@@ -1,12 +1,12 @@
-import './App.css'
+import './App.css';
+import Projects from './componenets/Projects';
 
 function App() {
-
   return (
-    <div>
-      <h1>Vite + React + TS</h1>
+    <div className="App">
+      <Projects />
     </div>
   );
 }
 
-export default App
+export default App;
