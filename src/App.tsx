@@ -12,12 +12,10 @@ function App() {
     <div className="bg-gray-900 text-white text-4xl">
       <Navbar />
       <Intro />
-      <div className="py-25 space-y-25">
-        <School />
-        <Work />
-        <Projects />
-        <Links />
-      </div>
+      <School />
+      <Work />
+      <Projects />
+      <Links />
     </div>
   );
 }

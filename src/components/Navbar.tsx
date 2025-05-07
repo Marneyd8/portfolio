@@ -2,7 +2,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-900 py-4 fixed w-full top-0 z-10 shadow-lg">
+    <nav className="bg-gray-900 py-2 fixed w-full top-0 z-10 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <h2 className="text-2xl font-bold">My Portfolio</h2>
         <div className="flex gap-6">

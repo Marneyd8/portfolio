@@ -3,7 +3,7 @@ import eduImage from "../assets/education.svg";
 const School = () => {
   return (
     <section id="school">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto py-20">
         <h2 className="text-5xl font-bold mb-12 pl-25">Education</h2>
         <div className="space-y-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
