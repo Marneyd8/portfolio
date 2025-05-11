@@ -4,6 +4,7 @@ import led from '../assets/led.jpg'
 import film from '../assets/film.jpg'
 import food from '../assets/food.jpg'
 import pokemon from '../assets/pokemon.jpg'
+import stats from '../assets/stats.png'
 
 const Projects = () => {
   const projectList = [
@@ -32,6 +33,14 @@ const Projects = () => {
       imageUrl: film,
     },
     {
+      name: 'Statistics Dashboard',
+      technologies: 'ASP.NET Core · MVC · Entity Framework Core · Chart.js · JavaScript',
+      description:
+        'An interactive dashboard built with ASP.NET Core MVC for visualizing item and client statistics. Features dynamic charts and real-time data updates using an API.',
+      githubUrl: 'https://github.com/Marneyd8/StatisticsDashboard',
+      imageUrl: stats,
+    },
+    {
       name: 'EasyFood Desktop App',
       technologies: 'Java · Swing · H2 · Maven · XML',
       description:
@@ -53,22 +62,25 @@ const Projects = () => {
   return (
     <section id="projects" className="pt-15">
       <h2 className="text-3xl font-bold mb-10 text-center">My Projects</h2>
+
       <div className="overflow-x-auto">
-        <div className="flex gap-6 justify-between pb-4 flex-wrap">
-          {projectList.map((project, index) => (
-            <div key={index} className="min-w-[300px] max-w-sm flex-shrink-0">
-              <Project
-                key={index}
-                name={project.name}
-                description={project.description}
-                githubUrl={project.githubUrl}
-                technologies={project.technologies}
-                imageUrl={project.imageUrl}
-              />
-            </div>
-          ))}
-        </div>
+  <div className="flex gap-4 justify-start flex-wrap">
+    {projectList.map((project, index) => (
+      <div key={index} className="w-1/4 p-4 flex-grow">
+        <Project
+          name={project.name}
+          description={project.description}
+          githubUrl={project.githubUrl}
+          technologies={project.technologies}
+          imageUrl={project.imageUrl}
+        />
       </div>
+    ))}
+  </div>
+</div>
+
+
+
     </section>
   );
 };
