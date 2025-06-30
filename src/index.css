@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+body {
+    margin: 0;
+    background: transparent;
+  }
+
+  a {
+    color: #0000ee;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    color: #ff0000;
+    text-decoration: none;
+  }
