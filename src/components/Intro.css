@@ -1,0 +1,87 @@
+@keyframes pulseSlow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes scaleUpSlow {
+  0% { transform: scale(0.95); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes scaleDownSlow {
+  0% { transform: scale(1.05); }
+  50% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+@keyframes flickerSlow {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes glitchSlow {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* Core effect classes */
+.pulseSlow {
+  animation: pulseSlow 4s infinite ease-in-out;
+  display: inline-block;
+}
+
+.scaleUpSlow {
+  animation: scaleUpSlow 4s infinite ease-in-out;
+  display: inline-block;
+}
+
+.scaleDownSlow {
+  animation: scaleDownSlow 4s infinite ease-in-out;
+  display: inline-block;
+}
+
+.flickerSlow {
+  animation: flickerSlow 3s infinite;
+  display: inline-block;
+}
+
+.glitchSlow {
+  animation: glitchSlow 3s infinite;
+  display: inline-block;
+}
+
+.bounceSlow {
+  animation: bounceSlow 3s infinite;
+  display: inline-block;
+}
+
+/* Neon glow color variants */
+.neon {
+  text-shadow:
+    0 0 1px #fff,
+    0 0 2px currentColor,
+    0 0 4px currentColor;
+}
+
+.neon.cyan { color: #00ffff; }
+.neon.pink { color: #ff00ff; }
+.neon.orange { color: #ff9900; }
+.neon.yellow { color: #ffff33; }
+.neon.green { color: #00ff66; }
+.neon.purple { color: #cc00ff; }
+.neon.blue { color: #3399ff; }
+.neon.red { color: #ff3333; }

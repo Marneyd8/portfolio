@@ -36,7 +36,7 @@ function App() {
       <ParticlesOverlay />
       <Windows95Sidebar onSelectPanel={togglePanel} visiblePanels={visiblePanels} />
         {visiblePanels.Intro && (
-          <Windows95Window title="Intro" onClose={() => handleClose("Intro")}>
+          <Windows95Window title="[Intro.exe]" onClose={() => handleClose("Intro")}>
             <Intro />
           </Windows95Window>
         )}
