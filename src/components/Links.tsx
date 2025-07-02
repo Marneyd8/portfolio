@@ -1,4 +1,3 @@
-import Windows95Window from './Windows95Window';
 
 const Links = () => (
   <div>

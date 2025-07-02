@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
-const Windows95Window = ({ title, children, onClose }) => {
+const Windows95Window = ({ title, children, onClose, maxWidth = "600px" }) => {
   const [visible, setVisible] = useState(true);
   const [shouldRender, setShouldRender] = useState(true);
 
-  // position state
-  const [pos, setPos] = useState({ x: 100, y: 100 }); // initial position
+  const [pos, setPos] = useState({ x: 100, y: 100 });
   const dragging = useRef(false);
   const dragStartPos = useRef({ x: 0, y: 0 });
   const windowStartPos = useRef({ x: 0, y: 0 });
@@ -14,31 +13,26 @@ const Windows95Window = ({ title, children, onClose }) => {
     if (!visible) {
       const timeout = setTimeout(() => {
         setShouldRender(false);
-        onClose(); // inform parent to hide this panel
+        onClose();
       }, 200);
       return () => clearTimeout(timeout);
     }
   }, [visible, onClose]);
 
-  // mouse down on title bar to start dragging
   const onMouseDown = (e) => {
     dragging.current = true;
     dragStartPos.current = { x: e.clientX, y: e.clientY };
     windowStartPos.current = { ...pos };
-    // prevent selecting text while dragging
     e.preventDefault();
   };
 
-  // mouse move moves window if dragging
   const onMouseMove = (e) => {
     if (!dragging.current) return;
-
     const dx = e.clientX - dragStartPos.current.x;
     const dy = e.clientY - dragStartPos.current.y;
     setPos({ x: windowStartPos.current.x + dx, y: windowStartPos.current.y + dy });
   };
 
-  // mouse up stops dragging
   const onMouseUp = () => {
     dragging.current = false;
   };
@@ -58,7 +52,8 @@ const Windows95Window = ({ title, children, onClose }) => {
         opacity: visible ? 1 : 0,
         transform: visible ? "scale(1)" : "scale(0.95)",
         fontFamily: "'Press Start 2P', monospace",
-        maxWidth: "600px",
+        maxWidth: maxWidth,
+        minWidth: "400px",
         border: "4px solid black",
         boxShadow: "inset 2px 2px 0 0 rgb(255,255,255), inset -2px -2px 0 0 rgb(0,0,0)",
         backgroundColor: "#e0e0e0",

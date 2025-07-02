@@ -36,30 +36,43 @@ function App() {
       <ParticlesOverlay />
       <Windows95Sidebar onSelectPanel={togglePanel} visiblePanels={visiblePanels} />
         {visiblePanels.Intro && (
-          <Windows95Window title="[Intro.exe]" onClose={() => handleClose("Intro")}>
-            <Intro />
-          </Windows95Window>
-        )}
-        {visiblePanels.School && (
-          <Windows95Window title="School" onClose={() => handleClose("School")}>
-            <School />
-          </Windows95Window>
-        )}
-        {visiblePanels.Work && (
-          <Windows95Window title="Work" onClose={() => handleClose("Work")}>
-            <Work />
-          </Windows95Window>
-        )}
-        {visiblePanels.Projects && (
-          <Windows95Window title="Projects" onClose={() => handleClose("Projects")}>
-            <Projects />
-          </Windows95Window>
-        )}
-        {visiblePanels.Links && (
-          <Windows95Window title="Links" onClose={() => handleClose("Links")}>
-            <Links />
-          </Windows95Window>
-        )}
+  <Windows95Window title="[Intro.exe]" onClose={() => handleClose("Intro")}>
+    <Intro />
+  </Windows95Window>
+)}
+
+    {visiblePanels.School && (
+      <Windows95Window title="School" onClose={() => handleClose("School")}>
+        <School />
+      </Windows95Window>
+    )}
+
+    {visiblePanels.Work && (
+      <Windows95Window
+        title="Work"
+        onClose={() => handleClose("Work")}
+        maxWidth="900px"  // wider window for Work
+      >
+        <Work />
+      </Windows95Window>
+    )}
+
+    {visiblePanels.Projects && (
+      <Windows95Window
+        title="Projects"
+        onClose={() => handleClose("Projects")}
+        maxWidth="900px"  // wider window for Projects
+      >
+        <Projects />
+      </Windows95Window>
+    )}
+
+    {visiblePanels.Links && (
+      <Windows95Window title="Links" onClose={() => handleClose("Links")}>
+        <Links />
+      </Windows95Window>
+    )}
+
     </div>
   );
 }

@@ -37,7 +37,7 @@ const ParticlesOverlay = () => {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      for (let p of particles.current) {
+      for (const p of particles.current) {
         // Passive random drift
         p.dx += (Math.random() - 0.5) * DRIFT_AMOUNT;
         p.dy += (Math.random() - 0.5) * DRIFT_AMOUNT;

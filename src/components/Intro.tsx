@@ -12,7 +12,7 @@ const Intro = () => (
       borderRadius: "12px",
     }}
   >
-    <div className="space-y-4 text-xs leading-relaxed select-none">
+    <div className="space-y-4 text-base leading-relaxed select-none">
       <p>
         Currently studying{" "}
         <span className="neon cyan pulseSlow">Ing.</span> in{" "}
@@ -22,12 +22,12 @@ const Intro = () => (
       </p>
       <p>
         Want to learn more about{" "}
-        <span className="neon green bounceSlow">web development</span> and working toward a{" "}
+        <span className="neon green flickerSlow">web development</span> and working toward a{" "}
         <span className="neon purple pulseSlow">full-stack</span> role.
       </p>
       <p>
         Combining <span className="neon blue scaleUpSlow">React</span> on the frontend with{" "}
-        <span className="neon red glitchSlow">C#/.NET</span> on the backend.
+        <span className="neon red flickerSlow">C#/.NET</span> on the backend.
       </p>
     </div>
   </div>

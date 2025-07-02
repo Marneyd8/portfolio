@@ -1,5 +1,3 @@
-import Windows95Window from './Windows95Window';
-
 const Projects = () => (
   <div>
     <ul>
