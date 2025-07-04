@@ -141,7 +141,7 @@ const Windows95Sidebar = ({ onSelectPanel, visiblePanels }) => {
           }}
         />
       </div>
-        <div className="mt-auto text-[14px] text-center pt-4 border-t border-black">
+      <div className="mt-auto text-[14px] text-center pt-4 border-t border-black">
         <div className="flex flex-col space-y-3 items-center">
           <a
             href="https://github.com/Marneyd8"

@@ -1,0 +1,160 @@
+@font-face {
+  font-family: 'PixelFont';
+  src: url('/fonts/PerfectDOSVGA437.woff2') format('woff2');
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 2rem 3.5rem; /* a bit bigger gap */
+  justify-content: center;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem; /* a bit wider gap between icon and title */
+  user-select: none;
+}
+
+.folder-icon {
+  font-size: 2.4rem; /* bigger icon */
+  position: relative;
+  cursor: pointer;
+  color: #007acc;
+  transition: color 0.2s ease;
+}
+
+.folder-icon:hover {
+  color: #005f99;
+  /* no underline on icon */
+}
+
+.folder-title {
+  font-weight: bold;
+  font-size: 1.1rem; /* bigger text */
+  cursor: pointer;
+  user-select: none;
+  color: #007acc;
+  transition: color 0.2s ease;
+  max-width: 14ch; /* slightly wider */
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+.folder-title:hover {
+  color: #005f99;
+  text-decoration: underline;
+}
+
+.folder-description {
+  font-size: 0.85rem; /* bigger description */
+  color: #555;
+  margin-left: auto;  /* center horizontally */
+  margin-right: auto;
+  max-width: 220px; /* wider description */
+  line-height: 1.3;
+  margin-top: 0.15rem;
+  text-align: center;
+}
+
+.project-details {
+  font-family: 'PixelFont', monospace;
+  font-size: 14px; /* bigger details */
+  white-space: pre-wrap;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #d0e4f7, #f0f7ff);
+  border: 3px inset #999; /* pixel-style inset border */
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 4px 4px 0 #bbb;
+  color: #222;
+  position: relative;
+  animation: fadeInContent 0.4s ease forwards;
+  overflow: auto;
+  max-height: 250px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Fade-in animation for project details */
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pixel-style bullet points in project details */
+.project-details div > div > div {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.project-details div > div > div::before {
+  content: "▶"; /* pixel-ish arrow bullet */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #007acc;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.highlight {
+  background-color: #87ceeb; /* sky blue */
+  color: #003366; /* dark blue for good contrast */
+  font-weight: 700;
+  padding: 0 4px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(135, 206, 235, 0.6);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: text;
+}
+
+.highlight:hover {
+  background-color: #a0d8f7;
+  box-shadow: 0 0 10px rgba(135, 206, 235, 0.9);
+}
+
+
+/* Scrollbar styling */
+.project-details::-webkit-scrollbar {
+  width: 10px;
+}
+.project-details::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border: 2px solid #bbb;
+}
+.project-details::-webkit-scrollbar-thumb {
+  background: #999;
+  border: 2px solid #bbb;
+  border-radius: 0;
+}
+
+/* Github link style */
+.github-link {
+  display: inline-block;
+  font-size: 14px; /* bigger link */
+  color: blue;
+  text-decoration: underline;
+  margin-top: 0.7rem;
+}
+
+/* Optional: subtle shadow on hover or focus */
+.Windows95Window:hover .project-details,
+.Windows95Window:focus-within .project-details {
+  box-shadow: 6px 6px 4px #aaa;
+}

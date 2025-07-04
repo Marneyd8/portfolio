@@ -42,9 +42,8 @@ const School = () => {
     [...Array(totalSegments)].map((_, i) => (
       <div
         key={i}
-        className={`inline-block h-5 rounded-full border-2 border-gray-600 ${
-          i < filledCount ? "bg-green-400" : "bg-gray-700"
-        }`}
+        className={`inline-block h-5 rounded-full border-2 border-gray-600 ${i < filledCount ? "bg-green-400" : "bg-gray-700"
+          }`}
         style={{
           width: segmentWidth,
           marginRight: i === totalSegments - 1 ? 0 : segmentMargin,

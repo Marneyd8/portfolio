@@ -59,21 +59,21 @@ const Work = () => {
       <ul className="jobs-list list-none p-0 m-0 text-base leading-relaxed select-text">
         {jobs.map((job, i) => (
           <li key={i} className="job-item mb-12 relative cursor-default">
-        <div className="job-title font-extrabold text-base border-l-4 border-[#39ff14] pl-4 mb-3 text-[#7fff7f] select-text relative transition-colors duration-300 hover:text-[#aaffaa] hover:drop-shadow-glow">
-          {job.title}{" "}
-          <span className="at-text font-medium text-[#339933]">at</span>{" "}
-          <strong>{job.company}</strong>
-          <br />
-          <em className="text-base text-[#339933]">({job.period})</em>
-        </div>
-        <ul className="job-details list-disc list-inside text-[#66ff66cc] text-sm pl-4 select-text">
-          {job.details.map((detail, idx) => (
-            <li key={idx} className="mb-2 relative">
-              {detail}
-            </li>
-          ))}
-        </ul>
-      </li>
+            <div className="job-title font-extrabold text-base border-l-4 border-[#39ff14] pl-4 mb-3 text-[#7fff7f] select-text relative transition-colors duration-300 hover:text-[#aaffaa] hover:drop-shadow-glow">
+              {job.title}{" "}
+              <span className="at-text font-medium text-[#339933]">at</span>{" "}
+              <strong>{job.company}</strong>
+              <br />
+              <em className="text-base text-[#339933]">({job.period})</em>
+            </div>
+            <ul className="job-details list-disc list-inside text-[#66ff66cc] text-sm pl-4 select-text">
+              {job.details.map((detail, idx) => (
+                <li key={idx} className="mb-2 relative">
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </li>
 
         ))}
       </ul>
