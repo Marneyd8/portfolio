@@ -1,5 +1,5 @@
 
-const Links = () => (
+const FreeTime = () => (
   <div>
     <ul>
       <li><a href="https://github.com/yourusername" className="text-blue-700 hover:underline">GitHub</a></li>
@@ -9,4 +9,4 @@ const Links = () => (
   </div>
 );
 
-export default Links;
+export default FreeTime;

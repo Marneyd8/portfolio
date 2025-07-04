@@ -3,10 +3,10 @@ import Intro from './components/Intro';
 import School from './components/School';
 import Work from './components/Work';
 import Projects from './components/Projects';
-import Links from './components/Links';
 import ParticlesOverlay from "./components/ParticlesOverlay";
 import Windows95Sidebar from './components/Windows95Sidebar';
 import Windows95Window from './components/Windows95Window';
+import FreeTime from './components/FreeTime';
 
 function App() {
   const [visiblePanels, setVisiblePanels] = useState({
@@ -14,7 +14,7 @@ function App() {
     School: true,
     Work: true,
     Projects: true,
-    Links: true,
+    FreeTime: true,
   });
 
   const togglePanel = (panel) => {
@@ -67,9 +67,9 @@ function App() {
       </Windows95Window>
     )}
 
-    {visiblePanels.Links && (
-      <Windows95Window title="Links" onClose={() => handleClose("Links")}>
-        <Links />
+    {visiblePanels.FreeTime && (
+      <Windows95Window title="FreeTime" onClose={() => handleClose("FreeTime")}>
+        <FreeTime />
       </Windows95Window>
     )}
 

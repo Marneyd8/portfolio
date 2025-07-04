@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import resume from "../assets/CV_Adam_Juhás.pdf";
 
 const Windows95Sidebar = ({ onSelectPanel, visiblePanels }) => {
-  const items = ["Intro", "School", "Work", "Projects", "Links"];
+  const items = ["Intro", "School", "Work", "Projects", "FreeTime"];
 
   const sidebarRef = useRef(null);
   // pupilPos: [x, y] normalized position (0 to 1)
@@ -139,6 +140,33 @@ const Windows95Sidebar = ({ onSelectPanel, visiblePanels }) => {
             marginTop: 6,
           }}
         />
+      </div>
+        <div className="mt-auto text-[14px] text-center pt-4 border-t border-black">
+        <div className="flex flex-col space-y-3 items-center">
+          <a
+            href="https://github.com/Marneyd8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-700 underline hover:text-blue-900"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/adam-juh%C3%A1s-a57ab3273/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-700 underline hover:text-blue-900"
+          >
+            LinkedIn
+          </a>
+          <a
+            href={resume}
+            download
+            className="text-blue-700 underline hover:text-blue-900 text-[10px]"
+          >
+            CV download
+          </a>
+        </div>
       </div>
     </div>
   );
