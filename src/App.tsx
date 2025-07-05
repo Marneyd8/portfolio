@@ -7,6 +7,7 @@ import School from "./components/School";
 import Windows95Sidebar from "./components/Windows95Sidebar";
 import Windows95Window from "./components/Windows95Window";
 import Work from "./components/Work";
+import Welcome from "./components/Welcome";
 
 function App() {
   const [visiblePanels, setVisiblePanels] = useState({
@@ -15,6 +16,7 @@ function App() {
     Work: true,
     Projects: true,
     FreeTime: true,
+    Welcome: true,
   });
 
   const togglePanel = (panel) => {
@@ -32,18 +34,35 @@ function App() {
   };
 
   const windowPositions = {
-    Intro: { top: -60, left: 100 },
-    School: { top: 50, left: 400 },
-    Work: { top: 250, left: 60 },
-    Projects: { top: 250, left: 400 },
-    FreeTime: { top: 450, left: 230 },
+    Welcome: { top: -60, left: 290 },
+    Intro: { top: -20, left: 900 },
+    School: { top: 465, left: 190 },
+    Work: { top: 365, left: 850 },
+    Projects: { top: 1050, left: 850 },
+    FreeTime: { top: 1050, left: 190 },
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white text-4xl relative" style={{ height: "170vh" }}>
-      
+    <div className="min-h-screen bg-gray-900 text-white text-4xl relative" style={{ height: "240vh" }}>
+
       <ParticlesOverlay />
       <Windows95Sidebar onSelectPanel={togglePanel} visiblePanels={visiblePanels} />
+
+      {visiblePanels.Welcome && (
+        <div
+          style={{
+            position: "absolute",
+            top: windowPositions.Welcome.top,
+            left: windowPositions.Welcome.left,
+          }}
+        >
+          <Windows95Window title="Welcome!" onClose={() => handleClose("Welcome")}
+            
+          maxWidth="300px">
+            <Welcome />
+          </Windows95Window>
+        </div>
+      )}
 
       {visiblePanels.Intro && (
         <div
@@ -52,9 +71,14 @@ function App() {
             top: windowPositions.Intro.top,
             left: windowPositions.Intro.left,
             zIndex: 100,
+            width: 300,
+            minWidth: 300,
           }}
         >
-          <Windows95Window title="[Intro.exe]" onClose={() => handleClose("Intro")}>
+          <Windows95Window 
+          title="[Intro.exe]" 
+          onClose={() => handleClose("Intro")}
+          >
             <Intro />
           </Windows95Window>
         </div>
@@ -62,17 +86,20 @@ function App() {
 
       {visiblePanels.School && (
         <div
-  style={{
-    position: "absolute",
-    top: windowPositions.School.top,
-    left: windowPositions.School.left,
-    zIndex: 100,
-    width: 700,
-    minWidth: 700,
-  }}
->
-        
-          <Windows95Window title="School" onClose={() => handleClose("School")}>
+          style={{
+            position: "absolute",
+            top: windowPositions.School.top,
+            left: windowPositions.School.left,
+            zIndex: 100,
+            maxWidth: "600px",
+          }}
+        >
+
+          <Windows95Window 
+            title="School" 
+            onClose={() => handleClose("School")}
+            maxWidth="600px"
+          >
             <School />
           </Windows95Window>
         </div>
@@ -85,13 +112,13 @@ function App() {
             top: windowPositions.Work.top,
             left: windowPositions.Work.left,
             zIndex: 100,
-            maxWidth: "900px",
+            maxWidth: "700px",
           }}
         >
           <Windows95Window
             title="Work"
             onClose={() => handleClose("Work")}
-            maxWidth="900px"
+            maxWidth="700px"
           >
             <Work />
           </Windows95Window>
@@ -105,13 +132,13 @@ function App() {
             top: windowPositions.Projects.top,
             left: windowPositions.Projects.left,
             zIndex: 100,
-            maxWidth: "900px",
+            maxWidth: "700px",
           }}
         >
           <Windows95Window
             title="Projects"
             onClose={() => handleClose("Projects")}
-            maxWidth="900px"
+            maxWidth="700px"
           >
             <Projects />
           </Windows95Window>

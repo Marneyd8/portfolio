@@ -52,7 +52,7 @@ const Windows95Window = ({ title, children, onClose, maxWidth = "600px" }) => {
         opacity: visible ? 1 : 0,
         transform: visible ? "scale(1)" : "scale(0.95)",
         fontFamily: "'Press Start 2P', monospace",
-        maxWidth: maxWidth,
+        width: maxWidth,
         minWidth: "400px",
         border: "4px solid black",
         boxShadow: "inset 2px 2px 0 0 rgb(255,255,255), inset -2px -2px 0 0 rgb(0,0,0)",

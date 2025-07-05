@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import resume from "../assets/CV_Adam_Juhás.pdf";
 
 const Windows95Sidebar = ({ onSelectPanel, visiblePanels }) => {
-  const items = ["Intro", "School", "Work", "Projects", "FreeTime"];
+  const items = ["Welcome", "Intro", "School", "Work", "Projects", "FreeTime"];
 
   const sidebarRef = useRef(null);
   // pupilPos: [x, y] normalized position (0 to 1)
@@ -56,7 +56,7 @@ const Windows95Sidebar = ({ onSelectPanel, visiblePanels }) => {
       ref={sidebarRef}
       className="fixed top-0 left-0 h-full w-38 bg-gray-200 border-r-4 border-black
                  p-4 text-black shadow-[inset_-4px_-4px_0_0_rgb(0,0,0),inset_4px_4px_0_0_rgb(255,255,255)] 
-                 flex flex-col"
+                 flex flex-col z-100"
       style={{ fontFamily: "'Press Start 2P', monospace" }}
     >
       <div className="mb-4 p-2 bg-gradient-to-br from-gray-100 to-gray-300 border-2 border-black text-center text-xs font-bold shadow-[2px_2px_0_0_rgb(0,0,0)]">

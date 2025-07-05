@@ -62,8 +62,8 @@ const School = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-gray-900 text-white rounded-lg shadow-lg"
-  style={{ fontFamily: "'Press Start 2P', cursive" }}
+    <div className="mx-auto p-6 bg-gray-900 text-white rounded-lg shadow-lg"
+      style={{ fontFamily: "'Press Start 2P', cursive" }}
 >
 
       <h2 className="text-2xl mb-4 border-b-2 border-green-400 pb-2 select-none">

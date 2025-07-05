@@ -1,5 +1,4 @@
-import React from "react";
-import "./Work.css"; // import custom css
+import "./Work.css";
 
 const jobs = [
   {

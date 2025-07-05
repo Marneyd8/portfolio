@@ -1,5 +1,5 @@
 const FreeTime = () => (
-  <div className="bg-[#111] text-white p-6 md:p-10 rounded-lg shadow-2xl border-4 border-pink-500 max-w-4xl mx-auto font-bold relative overflow-hidden">
+  <div className="bg-[#111] text-white md:p-10 rounded-lg shadow-2xl border-4 border-pink-500 max-w-4xl mx-auto font-bold relative overflow-hidden">
 
     <div className="absolute top-[-20px] right-[-20px] text-6xl rotate-[15deg] text-pink-600 opacity-30 pointer-events-none select-none">
       🧊
