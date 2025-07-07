@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import resume from "../assets/CV_Adam_Juhás.pdf";
 
 const Windows95Sidebar = ({ onSelectPanel, visiblePanels }) => {
-  const items = ["Welcome", "Intro", "School", "Work", "Projects", "FreeTime"];
+  const items = ["Welcome", "Intro", "School", "Work", "Projects", "FreeTime", "Skills"];
 
   const sidebarRef = useRef(null);
   // pupilPos: [x, y] normalized position (0 to 1)

@@ -1,7 +1,7 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 6px;
 }
 
 .project-item {

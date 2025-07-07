@@ -8,6 +8,7 @@ import Windows95Sidebar from "./components/Windows95Sidebar";
 import Windows95Window from "./components/Windows95Window";
 import Work from "./components/Work";
 import Welcome from "./components/Welcome";
+import Skills from "./components/Skills";
 
 function App() {
   const [visiblePanels, setVisiblePanels] = useState({
@@ -17,6 +18,7 @@ function App() {
     Projects: true,
     FreeTime: true,
     Welcome: true,
+    Skills: true,
   });
 
   const togglePanel = (panel) => {
@@ -40,6 +42,7 @@ function App() {
     Work: { top: 365, left: 850 },
     Projects: { top: 1050, left: 850 },
     FreeTime: { top: 1050, left: 190 },
+    Skills: { top: 1760, left: 850 },
   };
 
   return (
@@ -57,8 +60,8 @@ function App() {
           }}
         >
           <Windows95Window title="Welcome!" onClose={() => handleClose("Welcome")}
-            
-          maxWidth="300px">
+
+            maxWidth="300px">
             <Welcome />
           </Windows95Window>
         </div>
@@ -75,9 +78,9 @@ function App() {
             minWidth: 300,
           }}
         >
-          <Windows95Window 
-          title="[Intro.exe]" 
-          onClose={() => handleClose("Intro")}
+          <Windows95Window
+            title="[Intro.exe]"
+            onClose={() => handleClose("Intro")}
           >
             <Intro />
           </Windows95Window>
@@ -95,8 +98,8 @@ function App() {
           }}
         >
 
-          <Windows95Window 
-            title="School" 
+          <Windows95Window
+            title="School"
             onClose={() => handleClose("School")}
             maxWidth="600px"
           >
@@ -156,6 +159,21 @@ function App() {
         >
           <Windows95Window title="FreeTime" onClose={() => handleClose("FreeTime")}>
             <FreeTime />
+          </Windows95Window>
+        </div>
+      )}
+
+      {visiblePanels.Skills && (
+        <div
+          style={{
+            position: "absolute",
+            top: windowPositions.Skills.top,
+            left: windowPositions.Skills.left,
+            zIndex: 100,
+          }}
+        >
+          <Windows95Window title="Skills" onClose={() => handleClose("Skills")} maxWidth="700px">
+            <Skills />
           </Windows95Window>
         </div>
       )}
