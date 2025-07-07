@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import resume from "../assets/CV_Adam_Juhás.pdf";
+import Face from "./Face";
+
 
 type PanelName = "Intro" | "School" | "Work" | "Projects" | "FreeTime" | "Welcome" | "Skills";
 
@@ -8,27 +10,20 @@ interface Windows95SidebarProps {
   visiblePanels: Record<PanelName, boolean>;
 }
 
-const Windows95Sidebar = ({ onSelectPanel, visiblePanels }: Windows95SidebarProps)  => {
-  const items = ["Welcome", "Intro", "School", "Work", "Projects", "FreeTime", "Skills"];
+const Windows95Sidebar = ({ onSelectPanel, visiblePanels }: Windows95SidebarProps) => {
+  const items: PanelName[] = ["Welcome", "Intro", "School", "Work", "Projects", "FreeTime", "Skills"];
 
   const sidebarRef = useRef<HTMLDivElement | null>(null);
-  // pupilPos: [x, y] normalized position (0 to 1)
   const [pupilPos, setPupilPos] = useState({ x: 0.5, y: 0.5 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!sidebarRef.current) return;
-
       const rect = sidebarRef.current.getBoundingClientRect();
-
       const relativeX = e.clientX - rect.left;
       const relativeY = e.clientY - rect.top;
-
-      // Clamp horizontal and vertical positions within sidebar bounds
       const clampedX = Math.max(0, Math.min(relativeX, rect.width));
       const clampedY = Math.max(0, Math.min(relativeY, rect.height));
-
-      // Normalize to 0 - 1 range
       const normX = clampedX / rect.width;
       const normY = clampedY / rect.height;
 
@@ -44,19 +39,6 @@ const Windows95Sidebar = ({ onSelectPanel, visiblePanels }: Windows95SidebarProp
   // Calculate offsets from center (0.5)
   const pupilXOffset = (pupilPos.x - 0.5) * 2 * pupilMaxMove;
   const pupilYOffset = (pupilPos.y - 0.5) * 2 * pupilMaxMove;
-
-  // Eye styles to avoid repetition
-  const eyeStyle: React.CSSProperties = {
-    width: 40,
-    height: 24,
-    border: "3px solid black",
-    borderRadius: "20px / 12px",
-    backgroundColor: "white",
-    position: "relative",
-    boxShadow:
-      "inset -3px -3px 0 0 rgb(0,0,0), inset 3px 3px 0 0 rgb(255,255,255)",
-    marginLeft: 6, // spacing between eyes
-  };
 
   return (
     <div
@@ -86,68 +68,9 @@ const Windows95Sidebar = ({ onSelectPanel, visiblePanels }: Windows95SidebarProp
         ))}
       </ul>
 
-      {/* Face container: eyes, nose, mouth */}
-      <div className="mt-4 mx-auto flex flex-col items-center select-none">
-        {/* Eyes container */}
-        <div className="flex justify-center">
-          {/* Left eye */}
-          <div style={eyeStyle}>
-            <div
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                width: 12,
-                height: 12,
-                backgroundColor: "black",
-                borderRadius: "50%",
-                transform: `translate(calc(-50% + ${pupilXOffset}px), calc(-50% + ${pupilYOffset}px))`,
-                transition: "transform 0.1s ease-out",
-              }}
-            />
-          </div>
+      {/* Face component */}
+      <Face pupilXOffset={pupilXOffset} pupilYOffset={pupilYOffset} />
 
-          {/* Right eye */}
-          <div style={eyeStyle}>
-            <div
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                width: 12,
-                height: 12,
-                backgroundColor: "black",
-                borderRadius: "50%",
-                transform: `translate(calc(-50% + ${pupilXOffset}px), calc(-50% + ${pupilYOffset}px))`,
-                transition: "transform 0.1s ease-out",
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Nose */}
-        <div
-          style={{
-            width: 0,
-            height: 0,
-            borderLeft: "6px solid transparent",
-            borderRight: "6px solid transparent",
-            borderTop: "10px solid black",
-            marginTop: 6,
-          }}
-        />
-
-        {/* Mouth */}
-        <div
-          style={{
-            width: 24,
-            height: 6,
-            borderTop: "3px solid black",
-            borderRadius: "0 0 12px 12px",
-            marginTop: 6,
-          }}
-        />
-      </div>
       <div className="mt-auto text-[14px] text-center pt-4 border-t border-black">
         <div className="flex flex-col space-y-3 items-center">
           <a

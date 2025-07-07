@@ -1,6 +1,5 @@
 import { FaCode, FaDatabase, FaTools } from "react-icons/fa";
 import { motion } from "framer-motion";
-import type { JSX } from "react";
 
 const skills = {
     Languages: ["TypeScript", "C#", "Python", "Java", "C/C++"],
