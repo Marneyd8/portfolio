@@ -1,4 +1,3 @@
-// components/Face.tsx
 import React from "react";
 
 interface FaceProps {
