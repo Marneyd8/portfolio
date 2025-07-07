@@ -61,14 +61,15 @@ const highlightKeywords = (text) => {
 const Projects = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
-  const cycleProject = () => {
-    setOpenIndex((prev) => (prev + 1) % projects.length);
+  const getProjectClass = (index) => {
+    if (index === openIndex) return "carousel-card front";
+    if ((index - openIndex + projects.length) % projects.length === 1)
+      return "carousel-card right";
+    if ((openIndex - index + projects.length) % projects.length === 1)
+      return "carousel-card left";
+    return "carousel-card back";
   };
 
-  const visibleProjects = [
-    projects[openIndex],
-    projects[(openIndex + 1) % projects.length]
-  ];
 
   return (
     <>
@@ -95,15 +96,15 @@ const Projects = () => {
       </div>
 
       <div className="carousel-container">
-        {visibleProjects.map((project, i) => (
+        {projects.map((project, index) => (
           <div
             key={project.id}
-            className={`carousel-card ${i === 0 ? "front" : "back"}`}
+            className={getProjectClass(index)}
           >
             <Windows95Window
               title={project.name}
               onClose={() => { }}
-              maxWidth="630px"
+              maxWidth="500px"
             >
               <div className="project-details">
                 {project.details
@@ -124,6 +125,7 @@ const Projects = () => {
           </div>
         ))}
       </div>
+
     </>
   );
 };
