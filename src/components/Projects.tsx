@@ -59,73 +59,71 @@ const highlightKeywords = (text) => {
 };
 
 const Projects = () => {
-  const [openProjectWindows, setOpenProjectWindows] = useState([]);
+  const [openIndex, setOpenIndex] = useState(0);
 
-  const openProject = (project) => {
-    if (!openProjectWindows.find((p) => p.id === project.id)) {
-      setOpenProjectWindows((prev) => [...prev, project]);
-    }
+  const cycleProject = () => {
+    setOpenIndex((prev) => (prev + 1) % projects.length);
   };
 
-  const closeProject = (id) => {
-    setOpenProjectWindows((prev) => prev.filter((p) => p.id !== id));
-  };
+  const visibleProjects = [
+    projects[openIndex],
+    projects[(openIndex + 1) % projects.length]
+  ];
 
   return (
     <>
-      <div className="projects-grid">
-        {projects.map((project) => (
-          <div key={project.id}>
-            <div className="project-item">
+      <div className="projects-title-window">
+        <div className="projects-grid">
+          {projects.map((project) => (
+            <div key={project.id} className="project-item">
               <div
                 className="folder-icon"
-                onClick={() => openProject(project)}
+                onClick={cycleProject}
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && openProject(project)}
-                aria-label={`Open project ${project.name}`}
               >
                 📁
                 <div className="ping-dot"></div>
               </div>
-              <div
-                className="folder-title"
-                onClick={() => openProject(project)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && openProject(project)}
-                aria-label={`Open project ${project.name}`}
-              >
+              <div className="folder-title" onClick={cycleProject}>
                 {project.name}
               </div>
+              <div className="folder-description">{project.description}</div>
             </div>
-            <div className="folder-description">{project.description}</div>
+          ))}
+        </div>
+      </div>
+
+      <div className="carousel-container">
+        {visibleProjects.map((project, i) => (
+          <div
+            key={project.id}
+            className={`carousel-card ${i === 0 ? "front" : "back"}`}
+          >
+            <Windows95Window
+              title={project.name}
+              onClose={() => {}}
+              maxWidth="630px"
+            >
+              <div className="project-details">
+                {project.details
+                  ? highlightKeywords(project.details)
+                  : "No details provided for this project."}
+              </div>
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="github-link"
+                >
+                  🔗 View on GitHub
+                </a>
+              )}
+            </Windows95Window>
           </div>
         ))}
       </div>
-      {openProjectWindows.map((project) => (
-        <Windows95Window
-          key={project.id}
-          title={project.name}
-          onClose={() => closeProject(project.id)}
-          maxWidth="600px"
-        >
-          <div className="project-details">
-            {project.details ? highlightKeywords(project.details) : "No details provided for this project."}
-          </div>
-
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="github-link"
-            >
-              🔗 View on GitHub
-            </a>
-          )}
-        </Windows95Window>
-      ))}
     </>
   );
 };
