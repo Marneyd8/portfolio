@@ -3,6 +3,7 @@ import Windows95Window from "./Windows95Window";
 import './Projects.css';
 
 const projects = [
+  // your projects array unchanged
   {
     id: "a",
     name: "LED-Matrix-Control-System",
@@ -59,34 +60,37 @@ const highlightKeywords = (text) => {
 };
 
 const Projects = () => {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openStack, setOpenStack] = useState([]);
 
-  const getProjectClass = (index) => {
-    if (index === openIndex) return "carousel-card front";
-    if ((index - openIndex + projects.length) % projects.length === 1)
-      return "carousel-card right";
-    if ((openIndex - index + projects.length) % projects.length === 1)
-      return "carousel-card left";
-    return "carousel-card back";
+  const openProject = (projectId) => {
+  setOpenStack((prev) => {
+    // Remove the project if it already exists, then add it to the end
+    const without = prev.filter((id) => id !== projectId);
+    return [...without, projectId];
+  });
+};
+
+
+  const handleClose = (projectId) => {
+    setOpenStack((prev) => prev.filter(id => id !== projectId));
   };
-
 
   return (
     <>
       <div className="projects-title-window">
         <div className="projects-grid">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div key={project.id} className="project-item">
               <div
                 className="folder-icon"
-                onClick={() => setOpenIndex(index)}
+                onClick={() => openProject(project.id)}
                 role="button"
                 tabIndex={0}
               >
                 📁
                 <div className="ping-dot"></div>
               </div>
-              <div className="folder-title" onClick={() => setOpenIndex(index)}>
+              <div className="folder-title" onClick={() => openProject(project.id)}>
                 {project.name}
               </div>
               <div className="folder-description">{project.description}</div>
@@ -96,36 +100,42 @@ const Projects = () => {
       </div>
 
       <div className="carousel-container">
-        {projects.map((project, index) => (
-          <div
-            key={project.id}
-            className={getProjectClass(index)}
-          >
-            <Windows95Window
-              title={project.name}
-              onClose={() => { }}
-              maxWidth="500px"
-            >
-              <div className="project-details">
-                {project.details
-                  ? highlightKeywords(project.details)
-                  : "No details provided for this project."}
-              </div>
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="github-link"
-                >
-                  🔗 View on GitHub
-                </a>
-              )}
-            </Windows95Window>
-          </div>
-        ))}
-      </div>
+        {openStack.map((projectId, i) => {
+          const project = projects.find(p => p.id === projectId);
+          const position = openStack.length - 1 - i;
 
+          let className = "carousel-card hidden";
+          if (position === 0) className = "carousel-card front";
+          else if (position === 1) className = "carousel-card middle";
+          else if (position === 2) className = "carousel-card back";
+
+          return (
+            <div key={projectId} className={className}>
+              <Windows95Window
+                title={project.name}
+                onClose={() => handleClose(project.id)}
+                maxWidth="630px"
+              >
+                <div className="project-details">
+                  {project.details
+                    ? highlightKeywords(project.details)
+                    : "No details provided for this project."}
+                </div>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="github-link"
+                  >
+                    🔗 View on GitHub
+                  </a>
+                )}
+              </Windows95Window>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };

@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  padding: 16px;
 }
 
 .project-item {
@@ -47,54 +46,54 @@
 
 .carousel-container {
   position: relative;
-  perspective: 1200px;
-  margin-top: 40px;
+  margin-top: 50px;
+  right: 65px;
+  top: -30px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .carousel-card {
   position: absolute;
   width: 630px;
+  height: 400px;
   max-width: 90vw;
-  transition: transform 0.7s ease, opacity 0.7s ease;
-  transform-style: preserve-3d;
-  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
   pointer-events: none;
+  opacity: 0;
   z-index: 1;
 }
 
 .carousel-card.front {
-  transform: translateZ(200px) scale(1);
+  transform: translate(0px, 0px) scale(1);
   opacity: 1;
   pointer-events: auto;
   z-index: 4;
 }
 
-.carousel-card.left {
-  transform: rotateY(-35deg) translateX(-340px) scale(0.9);
-  opacity: 0.6;
-  z-index: 3;
-}
-
-.carousel-card.right {
-  transform: rotateY(35deg) translateX(340px) scale(0.9);
-  opacity: 0.6;
+.carousel-card.middle {
+  transform: translate(-40px, 40px) scale(0.95);
+  opacity: 0.8;
   z-index: 3;
 }
 
 .carousel-card.back {
-  transform: translateZ(-200px) scale(0.8) rotateY(180deg);
-  opacity: 0.3;
+  transform: translate(-80px, 80px) scale(0.9);
+  opacity: 0.6;
   z-index: 2;
+}
+
+.carousel-card.hidden {
+  transform: translate(-120px, 120px) scale(0.85);
+  opacity: 0.3;
+  z-index: 1;
 }
 
 .project-details {
   padding: 10px;
   line-height: 1.5;
 }
-
 
 .github-link {
   display: inline-block;
