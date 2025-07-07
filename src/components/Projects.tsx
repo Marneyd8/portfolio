@@ -63,12 +63,12 @@ const Projects = () => {
   const [openStack, setOpenStack] = useState([]);
 
   const openProject = (projectId) => {
-  setOpenStack((prev) => {
-    // Remove the project if it already exists, then add it to the end
-    const without = prev.filter((id) => id !== projectId);
-    return [...without, projectId];
-  });
-};
+    setOpenStack((prev) => {
+      // Remove the project if it already exists, then add it to the end
+      const without = prev.filter((id) => id !== projectId);
+      return [...without, projectId];
+    });
+  };
 
 
   const handleClose = (projectId) => {
@@ -88,7 +88,11 @@ const Projects = () => {
                 tabIndex={0}
               >
                 📁
-                <div className="ping-dot"></div>
+                <span
+                  className="ping-dot"
+                  style={{ backgroundColor: openStack.includes(project.id) ? 'limegreen' : 'red' }}
+                ></span>
+
               </div>
               <div className="folder-title" onClick={() => openProject(project.id)}>
                 {project.name}
