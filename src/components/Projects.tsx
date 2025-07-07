@@ -74,18 +74,18 @@ const Projects = () => {
     <>
       <div className="projects-title-window">
         <div className="projects-grid">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div key={project.id} className="project-item">
               <div
                 className="folder-icon"
-                onClick={cycleProject}
+                onClick={() => setOpenIndex(index)}
                 role="button"
                 tabIndex={0}
               >
                 📁
                 <div className="ping-dot"></div>
               </div>
-              <div className="folder-title" onClick={cycleProject}>
+              <div className="folder-title" onClick={() => setOpenIndex(index)}>
                 {project.name}
               </div>
               <div className="folder-description">{project.description}</div>
@@ -102,7 +102,7 @@ const Projects = () => {
           >
             <Windows95Window
               title={project.name}
-              onClose={() => {}}
+              onClose={() => { }}
               maxWidth="630px"
             >
               <div className="project-details">
