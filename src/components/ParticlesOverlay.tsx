@@ -9,7 +9,7 @@ const CONNECTION_DISTANCE = 120;
 const MOUSE_REPEL_RADIUS = 100;
 
 const ParticlesOverlay = () => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouseRef = useRef({ x: -9999, y: -9999 });
 
   const particles = useRef(
@@ -24,12 +24,19 @@ const ParticlesOverlay = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
     };
+
 
     resize();
     window.addEventListener("resize", resize);
@@ -38,11 +45,9 @@ const ParticlesOverlay = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       for (const p of particles.current) {
-        // Passive random drift
         p.dx += (Math.random() - 0.5) * DRIFT_AMOUNT;
         p.dy += (Math.random() - 0.5) * DRIFT_AMOUNT;
 
-        // Retract from mouse
         const dx = p.x - mouseRef.current.x;
         const dy = p.y - mouseRef.current.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -53,17 +58,16 @@ const ParticlesOverlay = () => {
           p.dy += (dy / dist) * force * repelStrength;
         }
 
-        // Move and apply damping
+        // Move
         p.x += p.dx;
         p.y += p.dy;
         p.dx *= DAMPING;
         p.dy *= DAMPING;
 
-        // Bounce off edges
+        // Bounce
         if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
 
-        // Draw particle with glow
         const pulse = Math.sin(Date.now() * 0.002 + p.x + p.y) * 0.3 + p.pulse;
         const velocity = Math.sqrt(p.dx * p.dx + p.dy * p.dy);
         const glow = Math.min(velocity * 50, 1);
@@ -118,7 +122,7 @@ const ParticlesOverlay = () => {
 
     requestAnimationFrame(draw);
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
     };
 

@@ -1,5 +1,14 @@
+type Project = {
+    name: string;
+    details: string;
+};
 
-const ProjectDetailWindow = ({ project, onClose }) => {
+type ProjectDetailWindowProps = {
+    project: Project;
+    onClose: () => void;
+};
+
+const ProjectDetailWindow = ({ project, onClose }: ProjectDetailWindowProps) => {
     return (
         <div className="absolute top-20 left-20 w-[500px] bg-gray-100 border-2 border-black p-2 shadow-[4px_4px_0_0_rgb(0,0,0)] font-['Press_Start_2P'] text-xs z-50">
             <div className="flex justify-between items-center bg-gray-300 border-b-2 border-black px-2 py-1">

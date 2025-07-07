@@ -1,15 +1,22 @@
 import { useState, useEffect, useRef } from "react";
 import resume from "../assets/CV_Adam_Juhás.pdf";
 
-const Windows95Sidebar = ({ onSelectPanel, visiblePanels }) => {
+type PanelName = "Intro" | "School" | "Work" | "Projects" | "FreeTime" | "Welcome" | "Skills";
+
+interface Windows95SidebarProps {
+  onSelectPanel: (panel: PanelName) => void;
+  visiblePanels: Record<PanelName, boolean>;
+}
+
+const Windows95Sidebar = ({ onSelectPanel, visiblePanels }: Windows95SidebarProps)  => {
   const items = ["Welcome", "Intro", "School", "Work", "Projects", "FreeTime", "Skills"];
 
-  const sidebarRef = useRef(null);
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
   // pupilPos: [x, y] normalized position (0 to 1)
   const [pupilPos, setPupilPos] = useState({ x: 0.5, y: 0.5 });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (!sidebarRef.current) return;
 
       const rect = sidebarRef.current.getBoundingClientRect();
@@ -39,7 +46,7 @@ const Windows95Sidebar = ({ onSelectPanel, visiblePanels }) => {
   const pupilYOffset = (pupilPos.y - 0.5) * 2 * pupilMaxMove;
 
   // Eye styles to avoid repetition
-  const eyeStyle = {
+  const eyeStyle: React.CSSProperties = {
     width: 40,
     height: 24,
     border: "3px solid black",

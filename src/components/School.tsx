@@ -10,9 +10,9 @@ const School = () => {
   const ingEnd = new Date("2027-07-01");
   const now = new Date();
 
-  const calcProgress = (start, end) => {
-    const total = end - start;
-    const elapsed = now - start;
+  const calcProgress = (start: Date, end: Date) => {
+    const total = end.getTime() - start.getTime();
+    const elapsed = now.getTime() - start.getTime();
     return Math.min(Math.max(elapsed / total, 0), 1);
   };
 
@@ -21,7 +21,7 @@ const School = () => {
   const [ingSegmentsFilled, setIngSegmentsFilled] = useState(0);
 
   useEffect(() => {
-    let animationFrame;
+    let animationFrame: number;
 
     const animate = () => {
       setIngSegmentsFilled((prev) => {
@@ -38,7 +38,7 @@ const School = () => {
   }, [ingTargetSegments]);
 
   // Helper to render pills
-  const renderPills = (filledCount) =>
+  const renderPills = (filledCount: number) =>
     [...Array(totalSegments)].map((_, i) => (
       <div
         key={i}
@@ -64,7 +64,7 @@ const School = () => {
   return (
     <div className="mx-auto p-6 bg-gray-900 text-white rounded-lg shadow-lg"
       style={{ fontFamily: "'Press Start 2P', cursive" }}
->
+    >
 
       <h2 className="text-2xl mb-4 border-b-2 border-green-400 pb-2 select-none">
         Education
@@ -75,7 +75,6 @@ const School = () => {
           Faculty of Informatics, Masaryk University, BRNO
         </h3>
 
-        {/* Bachelor’s Degree */}
         <div className="mt-4">
           <div className="mb-1 yellow">
             <strong>Bachelor’s Degree (Bc.)</strong> in Programming and Development
@@ -111,8 +110,6 @@ const School = () => {
           </div>
         </div>
 
-
-        {/* Master’s Degree */}
         <div className="mt-8">
           <div className="mb-1">
             <strong>Master’s Degree (Ing.)</strong> in Software Engineering

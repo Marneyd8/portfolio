@@ -46,7 +46,6 @@ const Work = () => {
         Work Experience
       </h2>
 
-      {/* Console prompt */}
       <div
         className="console-container flex items-start gap-2 text-base select-none"
         aria-label="Future console"

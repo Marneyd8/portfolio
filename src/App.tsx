@@ -21,14 +21,16 @@ function App() {
     Skills: true,
   });
 
-  const togglePanel = (panel) => {
+  type PanelName = keyof typeof visiblePanels;
+
+  const togglePanel = (panel: PanelName) => {
     setVisiblePanels((prev) => ({
       ...prev,
       [panel]: !prev[panel],
     }));
   };
 
-  const handleClose = (panel) => {
+  const handleClose = (panel: PanelName) => {
     setVisiblePanels((prev) => ({
       ...prev,
       [panel]: false,

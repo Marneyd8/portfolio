@@ -3,7 +3,6 @@ import Windows95Window from "./Windows95Window";
 import './Projects.css';
 
 const projects = [
-  // your projects array unchanged
   {
     id: "a",
     name: "LED-Matrix-Control-System",
@@ -38,7 +37,7 @@ const projects = [
   },
 ];
 
-const highlightKeywords = (text) => {
+const highlightKeywords = (text: string) => {
   const keywords = [
     "React", "Node.js", "WebSocket", "Vite", "TypeScript", "Chart.js",
     "ASP.NET Core", "WPF", "MVVM", "Tailwind", "JSON", "REST API",
@@ -62,16 +61,15 @@ const highlightKeywords = (text) => {
 const Projects = () => {
   const [openStack, setOpenStack] = useState(projects.map((p) => p.id));
 
-  const openProject = (projectId) => {
+  const openProject = (projectId: string) => {
     setOpenStack((prev) => {
-      // Remove the project if it already exists, then add it to the end
       const without = prev.filter((id) => id !== projectId);
       return [...without, projectId];
     });
   };
 
 
-  const handleClose = (projectId) => {
+  const handleClose = (projectId: string) => {
     setOpenStack((prev) => prev.filter(id => id !== projectId));
   };
 
@@ -112,6 +110,8 @@ const Projects = () => {
           else if (position === 1) className = "carousel-card middle";
           else if (position === 2) className = "carousel-card back";
 
+          if (!project) return null;
+
           return (
             <div key={projectId} className={className}>
               <Windows95Window
@@ -145,7 +145,6 @@ const Projects = () => {
         </div>
       )}
     </>
-
   );
 };
 

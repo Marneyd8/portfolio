@@ -1,6 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ReactNode, type MouseEvent as ReactMouseEvent } from "react";
 
-const Windows95Window = ({ title, children, onClose, maxWidth = "600px" }) => {
+interface Windows95WindowProps {
+  title: string;
+  children: ReactNode;
+  onClose: () => void;
+  maxWidth?: string;
+}
+
+const Windows95Window = ({ title, children, onClose, maxWidth = "600px" }: Windows95WindowProps) => {
   const [visible, setVisible] = useState(true);
   const [shouldRender, setShouldRender] = useState(true);
 
@@ -19,14 +26,14 @@ const Windows95Window = ({ title, children, onClose, maxWidth = "600px" }) => {
     }
   }, [visible, onClose]);
 
-  const onMouseDown = (e) => {
+  const onMouseDown = (e: ReactMouseEvent<HTMLDivElement>) => {
     dragging.current = true;
     dragStartPos.current = { x: e.clientX, y: e.clientY };
     windowStartPos.current = { ...pos };
     e.preventDefault();
   };
 
-  const onMouseMove = (e) => {
+  const onMouseMove = (e: ReactMouseEvent<HTMLDivElement>) => {
     if (!dragging.current) return;
     const dx = e.clientX - dragStartPos.current.x;
     const dy = e.clientY - dragStartPos.current.y;
