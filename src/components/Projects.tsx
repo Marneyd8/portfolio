@@ -60,7 +60,7 @@ const highlightKeywords = (text) => {
 };
 
 const Projects = () => {
-  const [openStack, setOpenStack] = useState([]);
+  const [openStack, setOpenStack] = useState(projects.map((p) => p.id));
 
   const openProject = (projectId) => {
     setOpenStack((prev) => {
@@ -102,7 +102,6 @@ const Projects = () => {
           ))}
         </div>
       </div>
-
       <div className="carousel-container">
         {openStack.map((projectId, i) => {
           const project = projects.find(p => p.id === projectId);
@@ -140,7 +139,13 @@ const Projects = () => {
           );
         })}
       </div>
+      {openStack.length === 0 && (
+        <div className="project-hint text-center text-black/80">
+          📂 Open a folder to see the project details!
+        </div>
+      )}
     </>
+
   );
 };
 

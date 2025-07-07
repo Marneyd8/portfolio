@@ -57,6 +57,7 @@ function App() {
             position: "absolute",
             top: windowPositions.Welcome.top,
             left: windowPositions.Welcome.left,
+            zIndex: 100,
           }}
         >
           <Windows95Window title="Welcome!" onClose={() => handleClose("Welcome")}

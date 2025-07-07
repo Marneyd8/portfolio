@@ -44,11 +44,30 @@
   font-weight: bold;
 }
 
+.project-hint {
+  font-size: 1.1rem;
+  padding: 1rem;
+  animation: hintPopIn 0.5s ease-in-out;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes hintPopIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .carousel-container {
   position: relative;
   margin-top: 50px;
   right: 65px;
-  top: -30px;
+  top: -60px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
