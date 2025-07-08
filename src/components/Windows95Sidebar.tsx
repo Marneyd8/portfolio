@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import resume from "../assets/CV_Adam_Juhás.pdf";
 import Face from "./Face";
+import { useIsMobile } from "../App";
 
 type PanelName = "Intro" | "School" | "Work" | "Projects" | "FreeTime" | "Welcome" | "Skills";
 
@@ -10,6 +11,8 @@ interface Windows95SidebarProps {
 }
 
 const Windows95Sidebar = ({ onSelectPanel, visiblePanels }: Windows95SidebarProps) => {
+  const isMobile = useIsMobile();
+  if (isMobile) return null;
   const items: PanelName[] = ["Welcome", "Intro", "School", "Work", "Projects", "FreeTime", "Skills"];
   const sidebarRef = useRef<HTMLDivElement | null>(null);
   const [pupilPos, setPupilPos] = useState({ x: 0.5, y: 0.5 });
@@ -37,7 +40,7 @@ const Windows95Sidebar = ({ onSelectPanel, visiblePanels }: Windows95SidebarProp
   const pupilYOffset = (pupilPos.y - 0.5) * 2 * pupilMaxMove;
 
   return (
-    <>
+    <div>
       {/* Toggle button - only visible on mobile */}
       <button
         className="md:hidden fixed top-4 left-4 z-110 p-2 bg-gray-200 border-2 border-black shadow-md"
@@ -113,7 +116,7 @@ const Windows95Sidebar = ({ onSelectPanel, visiblePanels }: Windows95SidebarProp
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
