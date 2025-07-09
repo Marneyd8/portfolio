@@ -76,6 +76,11 @@ const Projects = () => {
   return (
     <>
       <div className="projects-title-window">
+        {/* 💡 HINT BUBBLE */}
+        <div className="projects-hint-bubble">
+          💡 Click on a folder to cycle through the projects and view their description!
+        </div>
+
         <div className="projects-grid">
           {projects.map((project) => (
             <div key={project.id} className="project-item">
@@ -90,7 +95,6 @@ const Projects = () => {
                   className="ping-dot"
                   style={{ backgroundColor: openStack.includes(project.id) ? 'limegreen' : 'red' }}
                 ></span>
-
               </div>
               <div className="folder-title" onClick={() => openProject(project.id)}>
                 {project.name}
@@ -100,6 +104,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
       <div className="carousel-container translate-x-[150px] translate-y-[90px] md:translate-x-0 md:translate-y-0">
         {openStack.map((projectId, i) => {
           const project = projects.find(p => p.id === projectId);
@@ -139,11 +144,6 @@ const Projects = () => {
           );
         })}
       </div>
-      {openStack.length === 0 && (
-        <div className="project-hint text-center text-black/80">
-          📂 Open a folder to see the project details!
-        </div>
-      )}
     </>
   );
 };
