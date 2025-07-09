@@ -100,7 +100,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
-      <div className="carousel-container">
+      <div className="carousel-container translate-x-[150px] translate-y-[90px] md:translate-x-0 md:translate-y-0">
         {openStack.map((projectId, i) => {
           const project = projects.find(p => p.id === projectId);
           const position = openStack.length - 1 - i;

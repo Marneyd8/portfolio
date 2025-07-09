@@ -63,7 +63,7 @@ function App() {
       Work: { top: 1240, left: 260 },
       FreeTime: { top: 1880, left: 260 },
       Projects: { top: 2600, left: 260 },
-      Skills: { top: 3100, left: 260 },
+      Skills: { top: 3160, left: 260 },
     }
   : {
       Welcome: { top: -60, left: 290 },
