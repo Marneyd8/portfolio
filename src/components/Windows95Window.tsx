@@ -17,7 +17,7 @@ const Windows95Window = ({ title, children, onClose, maxWidth = "600px", disable
   const dragging = useRef(false);
   const dragStartPos = useRef({ x: 0, y: 0 });
   const windowStartPos = useRef({ x: 0, y: 0 });
-  
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -59,7 +59,7 @@ const Windows95Window = ({ title, children, onClose, maxWidth = "600px", disable
 
   if (!shouldRender) return null;
 
-   return (
+  return (
     <div
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
@@ -91,8 +91,14 @@ const Windows95Window = ({ title, children, onClose, maxWidth = "600px", disable
       >
         {title}
         <button
-          onClick={() => setVisible(false)}
-          className="bg-red-600 text-white px-2 ml-2 hover:bg-red-700 border border-white text-xs"
+          onClick={() => {
+            if (!isMobile) setVisible(false);
+          }}
+          className={`px-2 ml-2 border border-white text-xs ${isMobile
+              ? "bg-red-600 text-white cursor-not-allowed"
+              : "bg-red-600 text-white hover:bg-red-700"
+            }`}
+          title={isMobile ? "Disabled on mobile" : "Close"}
         >
           X
         </button>
