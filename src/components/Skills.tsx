@@ -5,7 +5,7 @@ const skills = {
     Languages: ["TypeScript", "C#", "Python", "Java", "C/C++"],
     Frameworks: ["React", "Tailwind"],
     Database: ["PostgreSQL", "Microsoft SQL Server"],
-    Tools: ["Git", "Docker", "Vite"],
+    Tools: ["Axios", "xUnit.net", "Moq", "Git", "Docker", "Vite"],
 };
 
 type Category = 'Languages' | 'Database' | 'Tools';
